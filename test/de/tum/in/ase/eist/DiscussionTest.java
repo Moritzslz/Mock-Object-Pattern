@@ -21,8 +21,8 @@ class DiscussionTest {
     private Comment commentMock = createMock(Comment.class);
     @Test
     public void testComment() {
-        EasyMock.expect(commentMock.save()).andReturn(true);
-        EasyMock.replay(commentMock);
+        expect(commentMock.save()).andReturn(true);
+        replay(commentMock);
         discussion = new Discussion();
         assertEquals(true, discussion.addComment(commentMock));
         assertEquals(1, discussion.getNumberOfComments());
@@ -30,8 +30,8 @@ class DiscussionTest {
 
     @Test
     public void testCommentIfSavingFails() {
-        EasyMock.expect(commentMock.save()).andReturn(false);
-        EasyMock.replay(commentMock);
+        expect(commentMock.save()).andReturn(false);
+        replay(commentMock);
         discussion = new Discussion();
         assertEquals(false, discussion.addComment(commentMock));
         assertEquals(0, discussion.getNumberOfComments());
