@@ -15,9 +15,9 @@ class DiscussionTest {
     // TODO implement the tests
     @TestSubject
     Discussion discussion;
-    @TestSubject
+    @Mock
     Course courseMock = createMock(Course.class);
-    @TestSubject
+    @Mock
     Comment commentMock = createMock(Comment.class);
     @Test
     public void testComment() {
@@ -34,6 +34,7 @@ class DiscussionTest {
         EasyMock.replay(commentMock);
         discussion = new Discussion();
         discussion.addComment(commentMock);
+        assertEquals(false, discussion.addComment(commentMock));
         assertEquals(0, discussion.getNumberOfComments());
     }
 
