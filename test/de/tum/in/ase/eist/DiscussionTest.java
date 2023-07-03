@@ -14,11 +14,11 @@ class DiscussionTest {
 
     // TODO implement the tests
     @TestSubject
-    Discussion discussion;
+    private Discussion discussion;
     @Mock
-    Course courseMock = createMock(Course.class);
+    private Course courseMock = createMock(Course.class);
     @Mock
-    Comment commentMock = createMock(Comment.class);
+    private Comment commentMock = createMock(Comment.class);
     @Test
     public void testComment() {
         EasyMock.expect(commentMock.save()).andReturn(true);
@@ -33,7 +33,6 @@ class DiscussionTest {
         EasyMock.expect(commentMock.save()).andReturn(false);
         EasyMock.replay(commentMock);
         discussion = new Discussion();
-        discussion.addComment(commentMock);
         assertEquals(false, discussion.addComment(commentMock));
         assertEquals(0, discussion.getNumberOfComments());
     }
