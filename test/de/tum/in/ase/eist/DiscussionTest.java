@@ -24,12 +24,12 @@ class DiscussionTest {
         EasyMock.expect(commentMock.save()).andReturn(true);
         EasyMock.replay(commentMock);
         discussion = new Discussion();
-        discussion.addComment(commentMock);
+        assertEquals(true, discussion.addComment(commentMock));
         assertEquals(1, discussion.getNumberOfComments());
     }
 
     @Test
-    public void testCommentSavingFails() {
+    public void testCommentIfSavingFails() {
         EasyMock.expect(commentMock.save()).andReturn(false);
         EasyMock.replay(commentMock);
         discussion = new Discussion();
@@ -43,7 +43,6 @@ class DiscussionTest {
         EasyMock.expect(courseMock.isDiscussionAllowed(lecturer)).andReturn(true);
         EasyMock.replay(courseMock);
         discussion = new Discussion();
-        //assertEquals(true, courseMock.isDiscussionAllowed(lecturer));
         assertEquals(true, discussion.startCourseDiscussion(courseMock, lecturer, "Endterm"));
         assertEquals(courseMock, discussion.getCourse());
         assertEquals("Endterm", discussion.getTopic());
