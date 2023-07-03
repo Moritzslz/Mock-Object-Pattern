@@ -40,8 +40,8 @@ class DiscussionTest {
     @Test
     public void testStartCourseDiscussion() {
         Person lecturer = new Lecturer("Harald", "Räcke", LocalDate.now());
-        EasyMock.expect(courseMock.isDiscussionAllowed(lecturer)).andReturn(true);
-        EasyMock.replay(courseMock);
+        expect(courseMock.isDiscussionAllowed(lecturer)).andReturn(true);
+        replay(courseMock);
         discussion = new Discussion();
         assertEquals(true, discussion.startCourseDiscussion(courseMock, lecturer, "Endterm"));
         assertEquals(courseMock, discussion.getCourse());
